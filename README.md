@@ -2,6 +2,22 @@
 
 A small notes web application. Users can add notes through a web form or an HTTP API. The application runs in multiple containers, Nginx distributes requests between them, and notes are stored in a shared Docker volume.
 
+## Build and publish to Docker Hub
+
+Replace `YOUR_DOCKERHUB_USERNAME` with your Docker Hub username. Sign in, build the image from the project root, and push it to Docker Hub:
+
+```powershell
+docker login -u YOUR_DOCKERHUB_USERNAME
+docker build -t YOUR_DOCKERHUB_USERNAME/digi-tech-one:1.0 .
+docker push YOUR_DOCKERHUB_USERNAME/digi-tech-one:1.0
+```
+
+To run your published image with Compose, update the `image` value for the `digi-tech-one` service in `compose\docker-compose.yml`:
+
+```yaml
+image: "YOUR_DOCKERHUB_USERNAME/digi-tech-one:1.0"
+```
+
 ## Quick start
 
 You need Docker Desktop with the Linux Engine running and Docker Compose. Run all commands below from the project root in PowerShell.
